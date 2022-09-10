@@ -1,13 +1,14 @@
 const express = require('express');
 
 const app = express();
+app.set('port', (process.env.PORT || 8080))
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("Express på Vercel!")
 });
 
-app.listen(5000, () => {
-  console.log("Tjener kjører på port 5000.");
+app.listen(app.get('port'), () => {
+  console.log("Tjener kjører på port", app.get('port'));
 });
 
 module.exports = app;
